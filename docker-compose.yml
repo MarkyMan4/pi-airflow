@@ -1,0 +1,10 @@
+services:
+  airflow:
+    build: .
+    # command: airflow webserver -p 8080 & airflow scheduler
+    volumes:
+      - .:/airflow
+    ports: 
+      - "8080:8080"
+    env_file:
+      - .env
