@@ -1,1 +1,2 @@
-# install providers here
+# install providers here or additional requirements here
+dlt[duckdb]>=0.5.2

@@ -3,7 +3,7 @@ from typing import Any, Dict
 
 import dlt
 from dlt.sources.helpers.rest_client.auth import OAuth2ClientCredentials
-from rest_api import RESTAPIConfig, rest_api_resources
+from .rest_api import RESTAPIConfig, rest_api_resources
 
 
 class OAuth2ClientCredentialsStrava(OAuth2ClientCredentials):
@@ -75,10 +75,10 @@ def strava_source() -> Any:
     yield from rest_api_resources(config)
 
 
-def load_strava() -> None:
+def load_strava(db_file_path: str = "running.duckdb") -> None:
     pipeline = dlt.pipeline(
         pipeline_name="strava_api",
-        destination="duckdb",
+        destination=dlt.destinations.duckdb(db_file_path),
         dataset_name="strava",
     )
 

@@ -17,6 +17,8 @@ RUN airflow users create \
     --lastname User \
     --role Admin \
     --email admin@admin.org
-# RUN pip install -r requirements.txt
+
+RUN pip install -r requirements.txt
+
 
 CMD ["tail", "-f","/dev/null"]
