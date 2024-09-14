@@ -1,3 +1,4 @@
+import time
 from typing import Any, Dict
 
 import dlt
@@ -53,11 +54,18 @@ def strava_source() -> Any:
             },
             {
                 "name": "activities",
+                "primary_key": "id",
                 "endpoint": {
                     "path": "/athlete/activities",
                     # api docs https://developers.strava.com/docs/reference/#api-Activities-getLoggedInAthleteActivities
                     "params": {
-                        "after": 1725160601
+                        "after": {
+                            "type": "incremental",
+                            "cursor_path": "start_date",
+                            "initial_value": "2022-01-01T00:00:00Z",
+                            # query param needs to be passed as epoch
+                            "convert": lambda dt: int(time.mktime(time.strptime(dt, "%Y-%m-%dT%H:%M:%SZ")))
+                        }
                     },
                 },
             },
