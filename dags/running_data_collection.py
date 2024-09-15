@@ -6,7 +6,7 @@ from airflow.decorators import dag, task
 
 @dag(
     start_date=pendulum.datetime(2024, 9, 8, tz="America/Chicago"),
-    schedule="@daily",
+    schedule="0 */4 * * *",
     catchup=False
 )
 def running_data_collection():
