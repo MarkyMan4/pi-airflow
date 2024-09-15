@@ -3,6 +3,7 @@ from typing import Any, Dict
 
 import dlt
 from dlt.sources.helpers.rest_client.auth import OAuth2ClientCredentials
+
 from .rest_api import RESTAPIConfig, rest_api_resources
 
 
