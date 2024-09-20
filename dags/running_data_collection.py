@@ -17,7 +17,7 @@ def running_data_collection():
         import sys
         sys.path.append(os.path.abspath(os.environ["AIRFLOW_HOME"]))
 
-        from include.strava.strava_pipeline import load_strava
+        from include.dlt_pipelines.strava_pipeline import load_strava
 
         db_file_path = f"{os.getenv('AIRFLOW_HOME')}/data/running.duckdb"
         load_strava(db_file_path)
